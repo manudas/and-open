@@ -6,7 +6,7 @@ import {
 const filterUsers = (users = [], filters = {}) => {
     return users.filter((user) => {
         return Object.entries(filters).every(([filterKey, filterValue]) => {
-            if (filterValue !== null) { // not empty
+            if (filterValue !== null && filterValue !== '') { // not empty
                 switch (filterKey) {
                     case 'spend':
                         return user[filterKey] >= filterValue;
@@ -27,10 +27,11 @@ export const fetchUsersReducer = (state = {},
 }) => {
     switch (type) {
         case USERS_FETCHED().type:
+            const keyedUsers = payload.map((user) => ({...user, key: user.id}));
             return {
                 ...state,
-                all: payload,
-                filtered: filterUsers(payload, state.filters),
+                all: keyedUsers,
+                filtered: filterUsers(keyedUsers, state.filters),
             };
         case SET_FILTER().type:
             const newFilters = { ...state.filters, [filterType]: filterValue};
