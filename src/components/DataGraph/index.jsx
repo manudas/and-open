@@ -44,14 +44,20 @@ const DataGraph = () => {
 
     const options = {
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+            yAxes: [
+                {
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                },
+            ],
         },
+        layout: {
+            padding: {
+                top: 30,
+                bottom: 40
+            }
+        }
     };
 
     return <Line data={data} options={options} />;
