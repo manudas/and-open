@@ -11,11 +11,9 @@ import {
 import store from './store/initialStore';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
       <Coupons />
-    </Provider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

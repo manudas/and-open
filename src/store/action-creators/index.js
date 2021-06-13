@@ -4,3 +4,11 @@ export const USERS_FETCHED = (users) => {
         payload: users
     }
 };
+
+export const SET_FILTER = (filter, value) => {
+    return {
+        type: 'SET_FILTER',
+        filterType: filter,
+        filterValue: value
+    }
+};
