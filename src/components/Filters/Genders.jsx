@@ -5,7 +5,7 @@ import {
     withStyles,
 } from '@material-ui/core/styles';
 
-import * as options from '../../data/filterOptions';
+import * as options from '../../data/userDataOptions';
 
 const StyledButton = withStyles({
     root: {
