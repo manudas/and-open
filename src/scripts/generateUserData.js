@@ -1,16 +1,11 @@
 const fs = require('fs');
 
+const {
+    regions,
+    genders
+} = require('../data/filterOptions');
+
 const userLimit = 1000;
-const regions = [
-    'United States',
-    'Europe',
-    'APAC',
-    'Latin America',
-];
-const genders = [
-    'Male',
-    'Female',
-];
 
 const generateUserDataSet = () => {
     const Users = [];

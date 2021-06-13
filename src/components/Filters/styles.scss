@@ -1,0 +1,22 @@
+.filters {
+    width: 100%;
+    background-color: #fafafa;
+    min-height: 150px;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+
+    & > :not(:first-child) {
+        margin: 30px
+    }
+
+    @media (max-width: 940px) {
+        display: block;
+        & > :not(:first-child) {
+            margin: 0;
+            margin-top: 30px;
+            width: 100%;
+        }
+    }
+}
