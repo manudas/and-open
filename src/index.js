@@ -4,9 +4,17 @@ import './index.css';
 import Coupons from './Coupons';
 import reportWebVitals from './reportWebVitals';
 
+import {
+  Provider,
+} from 'react-redux';
+
+import store from './store/initialStore';
+
 ReactDOM.render(
   <React.StrictMode>
-    <Coupons />
+    <Provider store={store}>
+      <Coupons />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

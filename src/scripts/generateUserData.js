@@ -24,6 +24,7 @@ const generateUserDataSet = () => {
         });
     }
 
+    // fs.writeFile("../__mockedData__/users.js", `export default ${JSON.stringify(Users)};`, (err) => {
     fs.writeFile("../__mockedData__/users.json", JSON.stringify(Users), (err) => {
         if(err) {
             return console.log(err);
