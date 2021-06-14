@@ -40,6 +40,7 @@ The graph should plot the count of users that remain after the filters are appli
 Please include documentation on how to run this project from scratch and view in the browser, assuming that the target machine has git and yarn installed. You can build the react app statically or serve it from a local server as preferred.
 
 ## Instructions
+The answers for the background questions will be at the end of this document
 
 ### Download the sources
 
@@ -54,6 +55,10 @@ Once you have downloaded the sources, you can build the assets or run the unit t
 Open the folder you cloned before:
 ```bash
 cd and-open
+```
+If you are running the project for the next time, you need to install the dependencies:
+```bash
+yarn install
 ```
 Then run the following command:
 ```bash
@@ -73,3 +78,40 @@ In the same folder you cloned before, just run the following command:
 yarn test
 ```
 All the contained unit tests will be run automatically
+
+## Background Questions
+
+### Question 1:
+Please explain what is wrong with this code and what the observed behaviour might be in a component that included it.
+```javascript
+this.setState({count: this.state.count + 1})
+```
+#### Answer
+setState call is an asynchronous function, meaning that is not immediately run when you call it. React could batch many of them together. In case you don't call it too often maybe you won't notice anything and your application will work as expected.
+If you set your state many times in a short period of time you can find your application only applying your state update once. In reality, all your setState calls have been run, but as you relied on the current state value to compute the next state, all the function calls return the same value.
+Imagine that you have many setStates batched together at some point in time, and React starts to run them all. Let's see an example:
+```javascript
+// this.state.count is 0 at this point in time
+// now React starts to run the state update in an asynchronous way, meaning that this.state.count is the same for a bunch of different state updates:
+this.state.count = this.state.count + 1 // becomes this.state.count = 0 + 1
+this.state.count = this.state.count + 1 // becomes this.state.count = 0 + 1
+this.state.count = this.state.count + 1 // becomes this.state.count = 0 + 1
+this.state.count = this.state.count + 1 // becomes this.state.count = 0 + 1
+```
+So at the end after 4 updates of count, its value is only 1 and not 4.
+The approach to solve this issue is to call setState with a callback. This callback is passed the previous state and the props. For this example it would be something like this:
+```javascript
+this.setState((previousState) => ({
+    count: previousState.count + 1
+}));
+```
+[Read more about this issue here](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
+
+### Question 2:
+Can you please explain how Redux works, assuming you were talking to a non-technical audience.
+#### Answer
+Redux is like a store in which you put all the necessary info that many parts of your application may need. It's common that if more than two different parts of your applications the common approach is to use a Redux store for this. This is how it works:
+ - Some part of your application gets a small portion of information, maybe the birthday of a group of people. It could be that it connected to the internet to get that, or that the user typed it with their keyboard.
+ - That part of your application, that wants to share this data, creates an action, let's call it BIRTHDAY_FETCHED, and attach to it all the birthday dates that it got in the previous point. Then it tells the Redux store: "Hey, I have this action, please take care of telling everybody about it"
+ - Then the Redux store goes one by one throughout all the components of your application that previously showed some interest in the birthday of an user. The store provides this data to be manipulated as the interested receiver needs.
+ - Once the receiver has its data in the format they needed, it proceeds to use it for its own convenience. Many of those receiver components will use the birthday to show something on the screen, for instance, a birthday congratulation if the user using the app is celebrating their birthday today.
