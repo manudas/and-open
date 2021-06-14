@@ -76,4 +76,5 @@ const StyledGenders = withStyles({
         margin: 10,
     },
 })(Genders);
+
 export default StyledGenders;

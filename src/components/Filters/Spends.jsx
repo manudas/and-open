@@ -19,7 +19,6 @@ const marks = [
     },
 ];
 
-
 const StyledTypography = withStyles({
     root: {
         marginBottom: '1.3em',
@@ -51,6 +50,7 @@ const ValueLabelComponent = (props) => {
     );
 }
 
+// Shadow styles for the slider handler
 const thumbBoxShadow = '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)';
 const StyledSlider = withStyles({
     root: {

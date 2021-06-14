@@ -3,6 +3,17 @@ import {
     SET_FILTER,
 } from '../action-creators';
 
+/**
+ * Auxiliary function to get the fetched users
+ * from the API filtered by the user selections
+ *
+ * @param {Array} users The non-filtered user list from the API
+ * @param {Array} filters A list of filters the user of this
+ * APP has applied
+ *
+ * @returns An array containing users that have been filtered
+ * following the filter critearia passed as a parameter
+ */
 const filterUsers = (users = [], filters = {}) => {
     return users.filter((user) => {
         return Object.entries(filters).every(([filterKey, filterValue]) => {
@@ -18,6 +29,10 @@ const filterUsers = (users = [], filters = {}) => {
     });
 }
 
+/**
+ * Used to spy the filterUsers
+ * method from the unit tests
+ */
 export const functions = {
     filterUsers
 }

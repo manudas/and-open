@@ -22,6 +22,7 @@ const Filters = () => {
     const genderValue = useSelector((state) => state?.users?.filters?.gender);
     const regionValue = useSelector((state) => state?.users?.filters?.region);
     const spendValue = useSelector((state) => state?.users?.filters?.spend);
+
     return (
         <section className="filters">
             <Spends
