@@ -18,6 +18,10 @@ const filterUsers = (users = [], filters = {}) => {
     });
 }
 
+export const functions = {
+    filterUsers
+}
+
 export const fetchUsersReducer = (state = {},
     {
         filterType = null,
@@ -31,14 +35,14 @@ export const fetchUsersReducer = (state = {},
             return {
                 ...state,
                 all: keyedUsers,
-                filtered: filterUsers(keyedUsers, state.filters),
+                filtered: functions.filterUsers(keyedUsers, state.filters),
             };
         case SET_FILTER().type:
             const newFilters = { ...state.filters, [filterType]: filterValue};
             return {
                 ...state,
                 filters: newFilters,
-                filtered: filterUsers(state.all, newFilters),
+                filtered: functions.filterUsers(state.all, newFilters),
             };
         default:
             return state;

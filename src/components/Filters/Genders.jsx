@@ -41,7 +41,11 @@ const Genders = ({
             <StyledTypography id="non-linear-slider" gutterBottom>
                 Gender
             </StyledTypography>
-            <ButtonGroup color="primary" aria-label="gender selector">
+            <ButtonGroup
+                color="primary"
+                aria-label="gender selector"
+                data-testid="genders"
+            >
                 {
                     options.genders.map((gender, genderIndex) => {
                         return (
