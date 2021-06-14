@@ -36,6 +36,7 @@ describe('Test suite for Genders', () => {
 
         const gendersButtons = queryByTestId('genders');
 
+        // Simulate clicking on a male filter
         fireEvent.click(gendersButtons.firstChild); // male
 
         expect(setGender).toHaveBeenCalledTimes(1)

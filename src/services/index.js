@@ -17,6 +17,15 @@ export const userData = {
     get: () => userDataObj,
 };
 
+/**
+ * Invokes an action creator with the
+ * result of an API call, which in this
+ * code challenge has been mocked
+ *
+ * @returns an USERS_FETCHED action which
+ * payload will be an array of users
+ * fetched from an API
+ */
 export const fetchUsers = () => {
     return USERS_FETCHED(userData.get());
 }

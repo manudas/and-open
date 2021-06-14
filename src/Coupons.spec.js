@@ -88,6 +88,7 @@ describe('Test suite for Coupons', () => {
             queryByTestId,
         } = renderer;
 
+        // Lets modify the filters and trigger the related events
         const gendersButtons = queryByTestId('genders');
         fireEvent.click(gendersButtons.firstChild); // Male
 

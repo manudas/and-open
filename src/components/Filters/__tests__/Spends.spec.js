@@ -36,6 +36,7 @@ describe('Test suite for Spends', () => {
 
         const slider = queryByTestId('slider');
 
+        // Simulating clicking in any part of the slider bar
         fireEvent.mouseDown(slider, {
             clientX: 1,
             clientY: 0

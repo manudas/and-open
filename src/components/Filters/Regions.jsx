@@ -22,6 +22,7 @@ const Regions = ({
     setValue,
     ...props
 }) => {
+
     return (
         <div>
             <StyledTypography id="non-linear-slider" gutterBottom>
@@ -51,6 +52,5 @@ const StyledRegions = withStyles({
         margin: 10,
     },
 })(Regions);
-
 
 export default StyledRegions;

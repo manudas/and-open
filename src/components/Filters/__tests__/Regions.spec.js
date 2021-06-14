@@ -46,6 +46,8 @@ describe('Test suite for Regions', () => {
         expect(listBox).toBeInTheDocument();
 
         const dropDownElement = listBox.children[1];
+
+        // Simulate clicking on the United States filter
         fireEvent.click(dropDownElement);
 
         expect(setRegion).toHaveBeenCalledTimes(1)
