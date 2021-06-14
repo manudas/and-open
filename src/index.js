@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Coupons from './Coupons';
 import reportWebVitals from './reportWebVitals';
 
+import {
+  Provider,
+} from 'react-redux';
+
+import store from './store/initialStore';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+      <Coupons />
+  </Provider>,
   document.getElementById('root')
 );
 
