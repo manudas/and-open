@@ -1,5 +1,6 @@
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Typography from '@material-ui/core/Typography';
 
 import {
     withStyles,
@@ -22,32 +23,46 @@ const StyledButton = withStyles({
     },
 })(Button);
 
+const StyledTypography = withStyles({
+    root: {
+        marginBottom: '2em',
+        color: '#9a9a9a',
+        fontSize: '0.9rem',
+        fontWeight: 'bold',
+    },
+})(Typography);
+
 const Genders = ({
     selectedValue = null,
     setValue,
 }) => {
     return (
-        <ButtonGroup color="primary" aria-label="gender selector">
-            {
-                options.genders.map((gender, genderIndex) => {
-                    return (
-                            <StyledButton
-                                className={selectedValue === genderIndex ? 'selected' : null}
-                                key={gender}
-                                onClick={() => setValue(genderIndex)}
-                            >
-                                {gender}
-                            </StyledButton>
-                    );
-                })
-            }
-            <StyledButton
-                className={selectedValue === null ? 'selected' : null}
-                onClick={() => setValue(null)}
-            >
-                All
-            </StyledButton>
-        </ButtonGroup>
+        <div>
+            <StyledTypography id="non-linear-slider" gutterBottom>
+                Gender
+            </StyledTypography>
+            <ButtonGroup color="primary" aria-label="gender selector">
+                {
+                    options.genders.map((gender, genderIndex) => {
+                        return (
+                                <StyledButton
+                                    className={selectedValue === genderIndex ? 'selected' : null}
+                                    key={gender}
+                                    onClick={() => setValue(genderIndex)}
+                                >
+                                    {gender}
+                                </StyledButton>
+                        );
+                    })
+                }
+                <StyledButton
+                    className={selectedValue === null ? 'selected' : null}
+                    onClick={() => setValue(null)}
+                >
+                    All
+                </StyledButton>
+            </ButtonGroup>
+        </div>
     );
 }
 

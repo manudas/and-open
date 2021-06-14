@@ -1,5 +1,6 @@
 import Slider from '@material-ui/core/Slider';
 import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
 
 import {
     withStyles,
@@ -16,13 +17,26 @@ const marks = [
     },
 ];
 
+
+const StyledTypography = withStyles({
+    root: {
+        marginBottom: '1.3em',
+        color: '#9a9a9a',
+        fontSize: '0.9rem',
+        fontWeight: 'bold',
+    },
+})(Typography);
+
 const StyledValueLabelComponent = withStyles({
     tooltip: {
           background: 'transparent',
           color: '#9a9a9a',
           fontSize: '0.9rem',
-          fontWeight: 'bold'
-    },
+          fontWeight: 'bold',
+
+          marginTop: 25,
+          marginBottom: 0,
+    }
 })(Tooltip);
 
 const ValueLabelComponent = (props) => {
@@ -72,16 +86,21 @@ const Spends = ({
     setValue,
 }) => {
     return (
-        <StyledSlider
-            value={selectedValue}
-            min={0}
-            max={5000}
-            marks={marks}
-            onChange={setValue}
-            track={false}
-            valueLabelDisplay="on"
-            ValueLabelComponent={ValueLabelComponent}
-        />
+        <div>
+            <StyledTypography id="non-linear-slider" gutterBottom>
+                Minimal spend
+            </StyledTypography>
+            <StyledSlider
+                value={selectedValue}
+                min={0}
+                max={5000}
+                marks={marks}
+                onChange={setValue}
+                track={false}
+                valueLabelDisplay="on"
+                ValueLabelComponent={ValueLabelComponent}
+            />
+        </div>
     );
 }
 
