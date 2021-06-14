@@ -6,13 +6,15 @@ import {
     withStyles,
 } from '@material-ui/core/styles';
 
+export const maxSpends = 5000;
+
 const marks = [
     {
       value: 0,
       label: '$0',
     },
     {
-      value: 5000,
+      value: maxSpends,
       label: '$5,000',
     },
 ];
@@ -91,9 +93,10 @@ const Spends = ({
                 Minimal spend
             </StyledTypography>
             <StyledSlider
+                data-testid="slider"
                 value={selectedValue}
                 min={0}
-                max={5000}
+                max={maxSpends}
                 marks={marks}
                 onChange={setValue}
                 track={false}

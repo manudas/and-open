@@ -2,8 +2,21 @@ import {
     USERS_FETCHED,
 } from '../store/action-creators';
 
-import userData from '../__mockedData__/users';
+import userDataObj from '../__mockedData__/users';
+
+/**
+ * We'll include this structure so as to
+ * be able to mock this functions on the
+ * corresponding tests. Otherwise it'll
+ * have a different reference, as one
+ * time is exported and another used
+ * inside this same file, and the
+ * mockImplementation won't work as expected
+ */
+export const userData = {
+    get: () => userDataObj,
+};
 
 export const fetchUsers = () => {
-    return USERS_FETCHED(userData);
+    return USERS_FETCHED(userData.get());
 }

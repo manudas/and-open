@@ -11,6 +11,10 @@ import {
     SET_FILTER,
 } from '../../store/action-creators';
 
+import {
+    calculateSliderValue,
+} from './utils';
+
 import './styles.scss';
 
 const Filters = () => {
@@ -21,7 +25,10 @@ const Filters = () => {
     return (
         <section className="filters">
             <Spends
-                setValue={(_, val) => dispatch(SET_FILTER('spend', val))}
+                setValue={(_, val) => {
+                    const calculatedValue = calculateSliderValue(val);
+                    dispatch(SET_FILTER('spend', calculatedValue));
+                }}
                 selectedValue={spendValue}
             />
             <Regions

@@ -29,6 +29,7 @@ const Regions = ({
             </StyledTypography>
             <Select
                 {...props}
+                data-testid="drop-down"
                 displayEmpty
                 value={selectedValue}
                 onChange={setValue}
