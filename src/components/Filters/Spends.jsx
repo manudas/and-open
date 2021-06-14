@@ -1,6 +1,7 @@
 import Slider from '@material-ui/core/Slider';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 import {
     withStyles,
@@ -84,7 +85,7 @@ const StyledSlider = withStyles({
 })(Slider);
 
 const Spends = ({
-    selectedValue = 0,
+    selectedValue,
     setValue,
 }) => {
     return (
@@ -105,6 +106,16 @@ const Spends = ({
             />
         </div>
     );
+}
+
+Spends.propTypes = {
+    selectedValue: PropTypes.number,
+    setValue: PropTypes.func,
+}
+
+Spends.defaultProps = {
+    selectedValue: 0,
+    setValue: Function.prototype,
 }
 
 export default Spends;

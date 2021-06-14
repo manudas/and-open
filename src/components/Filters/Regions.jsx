@@ -1,6 +1,7 @@
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 import {
     withStyles,
@@ -18,7 +19,7 @@ const StyledTypography = withStyles({
 })(Typography);
 
 const Regions = ({
-    selectedValue = "",
+    selectedValue,
     setValue,
     ...props
 }) => {
@@ -44,6 +45,16 @@ const Regions = ({
             </Select>
         </div>
     );
+}
+
+Regions.propTypes = {
+    selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    setValue: PropTypes.func,
+}
+
+Regions.defaultProps = {
+    selectedValue: "",
+    setValue: Function.prototype,
 }
 
 const StyledRegions = withStyles({

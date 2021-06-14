@@ -1,6 +1,7 @@
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 import {
     withStyles,
@@ -33,7 +34,7 @@ const StyledTypography = withStyles({
 })(Typography);
 
 const Genders = ({
-    selectedValue = null,
+    selectedValue,
     setValue,
 }) => {
     return (
@@ -68,6 +69,16 @@ const Genders = ({
             </ButtonGroup>
         </div>
     );
+}
+
+Genders.propTypes = {
+    selectedValue: PropTypes.number,
+    setValue: PropTypes.func,
+}
+
+Genders.defaultProps = {
+    selectedValue: null,
+    setValue: Function.prototype,
 }
 
 const StyledGenders = withStyles({
