@@ -56,7 +56,7 @@ Open the folder you cloned before:
 ```bash
 cd and-open
 ```
-If you are running the project for the next time, you need to install the dependencies:
+If you are running the project for the first time, you need to install the dependencies:
 ```bash
 yarn install
 ```
